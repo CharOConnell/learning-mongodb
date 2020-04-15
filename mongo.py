@@ -5,7 +5,6 @@ MONGODB_URI = os.getenv("MONGO_URI")
 DBS_NAME = "myTestDB"
 COLLECTION_NAME = "myFirstMDB"
 
-
 def mongo_connect(url):
     try:
         conn = pymongo.MongoClient(url)
