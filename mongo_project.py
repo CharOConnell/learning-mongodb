@@ -11,7 +11,9 @@ def mongo_connect(url):
         return conn
     except pymongo.errors.ConnectionFailure as e:
         print("Could not connect to MongoDB: %s") % e
+# All connections made from before
 
+# show a menu for the front end!
 def show_menu():
     print("") # blank line for spacing
     print("1. Add a record")
@@ -23,6 +25,7 @@ def show_menu():
     option = input("Enter option: ")
     return option
 
+# have the main response loop
 def main_loop():
     while True:
         option = show_menu()
@@ -35,14 +38,15 @@ def main_loop():
         elif option == "4":
             print("You have selected option 4")
         elif option == "5":
-            conn.close()
-            break
+            conn.close() # close the connection
+            break # break out of the while loop
         else:
             print("Invalid option")
         print("")
 
-
+# connect to the mongo database
 conn = mongo_connect(MONGODB_URI)
 coll = conn[DBS_NAME][COLLECTION_NAME]
 
+# run the main loop!
 main_loop()
